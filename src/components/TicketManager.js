@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
 import '../admin.css';
 
-const TicketManager = () => {
-  const [tickets, setTickets] = useState([
-    { id: 1, passengerName: 'Miray Köksa', destination: 'İstanbul', status: 'Pending' },
-    { id: 2, passengerName: 'Cem Düşenkalkan', destination: 'Ankara', status: 'Confirmed' },
-    { id: 3, passengerName: 'Meryem Çanga', destination: 'İzmir', status: 'Pending' }
-  ]);
+const initialTickets = [
+  { id: 1, name: 'Miray Köksal', destination: 'İstanbul', status: 'Cancelled' },
+  { id: 2, name: 'Cem Düşenkalkan', destination: 'Ankara', status: 'Confirmed' },
+  { id: 3, name: 'Meryem Çanga', destination: 'İzmir', status: 'Pending' }
+];
 
-  const handleCancelTicket = (ticketId) => {
-    setTickets(tickets.map(ticket => {
-      if (ticket.id === ticketId) {
-        return { ...ticket, status: 'Cancelled' };
-      }
-      return ticket;
-    }));
+const TicketManager = () => {
+  const [tickets, setTickets] = useState(initialTickets);
+  const [showModal, setShowModal] = useState(false);
+  const [ticketToCancel, setTicketToCancel] = useState(null);
+
+  const handleCancelTicket = () => {
+    setTickets(tickets.map(ticket =>
+      ticket.id === ticketToCancel ? { ...ticket, status: 'Cancelled' } : ticket
+    ));
+    setShowModal(false);
+  };
+
+  const handleShowModal = (ticketId) => {
+    setTicketToCancel(ticketId);
+    setShowModal(true);
   };
 
   return (
@@ -34,18 +41,34 @@ const TicketManager = () => {
           {tickets.map((ticket) => (
             <tr key={ticket.id}>
               <td>{ticket.id}</td>
-              <td>{ticket.passengerName}</td>
+              <td>{ticket.name}</td>
               <td>{ticket.destination}</td>
               <td>{ticket.status}</td>
               <td>
-                {ticket.status === 'Pending' && (
-                  <button onClick={() => handleCancelTicket(ticket.id)}>Cancel</button>
+                {ticket.status !== 'Cancelled' && (
+                  <button className="cancel-button" onClick={() => handleShowModal(ticket.id)}>Cancel</button>
                 )}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {showModal && (
+        <div className="modal show">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h2 className="modal-title">Confirmation</h2>
+            </div>
+            <div className="modal-body">
+              <p>Are you sure you want to cancel this ticket?</p>
+            </div>
+            <div className="modal-footer">
+              <button onClick={() => setShowModal(false)}>Cancel</button>
+              <button onClick={handleCancelTicket}>Cancel Ticket</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

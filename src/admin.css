@@ -1,123 +1,248 @@
-.user-management {
-    margin-bottom: 20px;
-  }
-  
-  .user-management table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .user-management th,
-  .user-management td {
-    padding: 8px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .user-management th {
-    background-color: #f2f2f2;
-  }
-  
-  .user-management button {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .user-management button:hover {
-    background-color: #0056b3;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-dashboard {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.admin-dashboard h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-navigation {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.admin-navigation button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.admin-navigation button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.admin-navigation button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+.user-management,
+.ticket-manager,
+.train-manager {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+th,
+td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+td {
+  background-color: #fff;
+}
+
+tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.user-management button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.user-management button:hover {
+  background-color: #0056b3;
+}
+
+.ticket-manager button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.ticket-manager button:hover {
+  background-color: #bd2130;
+}
+
+.train-manager button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.train-manager button:hover {
+  background-color: #218838;
+}
+
+.add-admin-form {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.add-admin-form .form-group {
+  margin-bottom: 15px;
+}
+
+.add-admin-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-admin-form .form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.add-admin-button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-admin-button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  
-  .admin-dashboard {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .admin-navigation {
-    margin-bottom: 20px;
-  }
-  
-  .admin-navigation button {
-    margin-right: 10px;
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .admin-navigation button:hover {
-    background-color: #0056b3;
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-header,
+.modal-footer {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: none;
+}
+
+.modal-footer button {
+  margin-left: 10px;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-body {
+  padding: 10px 0;
+}
+
+/* Slide in animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
   }
 
-  
-  .ticket-manager {
-    margin-bottom: 20px;
+  to {
+    transform: translateY(0);
   }
-  
-  .ticket-manager table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .ticket-manager th,
-  .ticket-manager td {
-    padding: 8px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .ticket-manager th {
-    background-color: #f2f2f2;
-  }
-  
-  .ticket-manager button {
-    padding: 5px 10px;
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .ticket-manager button:hover {
-    background-color: #bd2130;
-  }
-  .train-manager {
-    margin-bottom: 20px;
-  }
-  
-  .train-manager table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .train-manager th,
-  .train-manager td {
-    padding: 8px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .train-manager th {
-    background-color: #f2f2f2;
-  }
-  
-  .train-manager button {
-    padding: 5px 10px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .train-manager button:hover {
-    background-color: #218838;
-  }
-    
+}

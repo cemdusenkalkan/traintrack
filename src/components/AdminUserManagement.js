@@ -10,13 +10,32 @@ const initialUsers = [
 
 const AdminUserManagement = () => {
   const [users, setUsers] = useState(initialUsers);
+  const [showModal, setShowModal] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
+  const [newAdmin, setNewAdmin] = useState({ name: '', email: '' });
 
-  // Geçici olarak kullancı silmek için
-  const handleDeleteUser = (userId) => {
-    setUsers(users.filter(user => user.id !== userId));
+  const handleDeleteUser = () => {
+    setUsers(users.filter(user => user.id !== userToDelete));
+    setShowModal(false);
   };
 
-  
+  const handleShowModal = (userId) => {
+    setUserToDelete(userId);
+    setShowModal(true);
+  };
+
+  const handleAddAdmin = (e) => {
+    e.preventDefault();
+    const newAdminUser = {
+      id: users.length + 1,
+      name: newAdmin.name,
+      email: newAdmin.email,
+      role: 'admin'
+    };
+    setUsers([...users, newAdminUser]);
+    setNewAdmin({ name: '', email: '' });
+  };
+
   return (
     <div className="user-management">
       <h2>User Management</h2>
@@ -38,12 +57,50 @@ const AdminUserManagement = () => {
               <td>{user.email}</td>
               <td>{user.role}</td>
               <td>
-                <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+                <button onClick={() => handleShowModal(user.id)}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {showModal && (
+        <div className="modal show">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h2 className="modal-title">Confirmation</h2>
+            </div>
+            <div className="modal-body">
+              <p>Are you sure you want to delete this user?</p>
+            </div>
+            <div className="modal-footer">
+              <button onClick={() => setShowModal(false)}>Cancel</button>
+              <button onClick={handleDeleteUser}>Delete</button>
+            </div>
+          </div>
+        </div>
+      )}
+      <h2>Add New Admin</h2>
+      <form onSubmit={handleAddAdmin} className="add-admin-form">
+        <div className="form-group">
+          <label>Name:</label>
+          <input
+            type="text"
+            value={newAdmin.name}
+            onChange={(e) => setNewAdmin({ ...newAdmin, name: e.target.value })}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            value={newAdmin.email}
+            onChange={(e) => setNewAdmin({ ...newAdmin, email: e.target.value })}
+            required
+          />
+        </div>
+        <button type="submit" className="add-admin-button">Add Admin</button>
+      </form>
     </div>
   );
 };
