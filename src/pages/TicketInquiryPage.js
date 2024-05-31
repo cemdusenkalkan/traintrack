@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../TrainSearchPage.css';
+import '../css/TicketInquiryPage.css';
 import '../css/form.css';
 import backgroundImage from '../img/BackgroundTicketInquiry.jpg';
 
-function TrainSearchPage() {
+function TicketInquiryPage() {
   const [ticketNumber, setTicketNumber] = useState('');
   const [lastName, setLastName] = useState('');
   const navigate = useNavigate();
@@ -94,4 +94,4 @@ function TrainSearchPage() {
   );
 }
 
-export default TrainSearchPage;
+export default TicketInquiryPage;

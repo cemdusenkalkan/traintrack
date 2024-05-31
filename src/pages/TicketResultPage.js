@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../Ticket.css';
 import ticketImage from '../img/ticket.png';
+import backgroundImage from '../img/BackgroundTicketInquiry.jpg';
 
 function TicketResultPage() {
   const location = useLocation();
@@ -15,11 +16,16 @@ function TicketResultPage() {
 
 
   return (
-    <div className="ticket-container">
-      <div className="ticket">
+    <div className="page" style={{
+      background: `url(${backgroundImage}) no-repeat center center fixed`,
+      backgroundSize: 'cover'
+    }}>
+      <div className="ticket-container">
+        {/* 
         <div className="ticket-logo">
           <img src={ticketImage} alt="Ticket" />
         </div>
+        */ }
         <div className="ticket-info">
           <table>
             <tbody>
@@ -51,6 +57,7 @@ function TicketResultPage() {
           </table>
           <button className="cancel-button" onClick={handleCancel}>Cancel Ticket</button>
         </div>
+
       </div>
     </div>
   );

@@ -1,3 +1,17 @@
+
+<h1> Yapılacaklar <h1>
+    -> Biri eşşek gibi yorumları silecek
+    -> Arkaplan görselini ayarla (krıp/ değiş/ bişiler yap işte)
+    -> Admindshboard'u düzenle
+        -> admin bir şey silerken onay pop-up'ı
+    -> linkedin hesaplarımızı eklemek
+    -> takvimdeki butonları değiştirmek
+    -> bilet adımları eklenecek - koltuk seçme falan.
+    -> kullanıcıya özel sayfalar:
+        * profil düzenleme
+        * biletlerimi görüntüleme (geçmiş / aktif - > iptal talebi)
+
+
 <h1> Tamamlanmış Kısımlar <h1>
     -> To ve From arasında değiştirmek
     -> To'da seçilenin From'da gözükmemesi
@@ -6,28 +20,17 @@
     -> Logo'ya tıklandığında home sayfasına aktar
     -> One way butonunu düzenle
     -> ticketların listelendiği sayfada önceki / sonraki güne geçiş
-    -> mainpage de arama yaparken kişi sayısı 
-
-
-<h1> Yapılacaklar <h1>
+    -> mainpage de arama yaparken kişi sayısı
     -> arama yaparken tarih/ from / to girilmediğinde uyarı çıkacak, şuanda kod hata veriyor.
-    -> Biri eşşek gibi yorumları silecek
-    -> Arkaplan görselini ayarla (krıp/ değiş/ bişiler yap işte)
+    -> About TrainTrack ksımına etkileyici süper yazılar yazmak 
+    -> admin admin ekleyebilsin
+    -> footer'a menünün aynısını taşı.
+    -> iğrenç bi footer ekledim o düzenlenecek
     -> Ticket Inquey düzenlenecek
         * nereden nereye / saati / iptal etme butonu / sayfayı büyüt yani güzelleştir
-    -> Admindshboard'u düzenle
-    -> Droupdown'u düzenle
-    -> About TrainTrack ksımına etkileyici süper yazılar yazmak 
-    -> linkedin hesaplarımızı eklemek
-    -> iğrenç bi footer ekledim o düzenlenecek
-    -> admin bir şey silerken onay pop-up'ı
-    -> admin admin ekleyebilsin
-    -> takvimdeki butonları değiştirmek
-    -> bilet adımları eklenecek - koltuk seçme falan.
-    -> footer'a menünün aynısını taşı.
-    
-    
-    -> kullanıcıya özel sayfalar:
-        * profil düzenleme
-        * biletlerimi görüntüleme (geçmiş / aktif - > iptal talebi)
+
+
+
+    ???? admin.css TicketResultPage içerisindeki tabloyu etkiliyor neden anlamadım!!
+
 

@@ -8,14 +8,14 @@ import LoginPage from './pages/LoginPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 import RegisterPage from './pages/RegisterPage';
-import TrainSearchPage from './pages/TrainSearchPage';
+import TicketInquiryPage from './pages/TicketInquiryPage';
 import TicketResultPage from './pages/TicketResultPage';
 import TicketsList from './pages/TicketsList';
 import PaymentPage from './pages/PaymentPage';
 import SelectSeatPage from './pages/SelectSeatPage';
 import AdminPanelPage from './pages/AdminPanelPage';
 import TicketPurchase from './pages/TicketPurchase';
-import AboutPage from './pages/AboutPage'; // AboutPage bileşenini içe aktarın
+import AboutPage from './pages/AboutPage';
 import ChatSupport from './components/ChatSupport';
 import Footer from './components/Footer';
 
@@ -62,7 +62,7 @@ const App = () => {
                   <Nav.Link as={NavLink} to="/" className="navbar-link">Home</Nav.Link>
                   <Nav.Link as={NavLink} to="/contact" className="navbar-link">Contact</Nav.Link>
                   <Nav.Link as={NavLink} to="/ticket-inquiry" className="navbar-link">Ticket Inquiry</Nav.Link>
-                  <Nav.Link as={NavLink} to="/about" className="navbar-link">About</Nav.Link> {/* About linki */}
+                  <Nav.Link as={NavLink} to="/about" className="navbar-link">About</Nav.Link>
                   {isLoggedIn ? (
                     <Dropdown align="end">
                       <Dropdown.Toggle variant="light" id="dropdown-basic" className="navbar-link">
@@ -86,7 +86,7 @@ const App = () => {
             <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/ticket-inquiry" element={<TrainSearchPage />} />
+            <Route path="/ticket-inquiry" element={<TicketInquiryPage />} />
             <Route path="/ticket-result" element={<TicketResultPage />} />
             <Route path="/ticket" element={<TicketsList />} />
             <Route path="/payment" element={<PaymentPage />} />
