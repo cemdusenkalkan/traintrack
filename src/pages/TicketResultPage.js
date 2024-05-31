@@ -1,11 +1,18 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../Ticket.css';
 import ticketImage from '../img/ticket.png';
 
 function TicketResultPage() {
   const location = useLocation();
-  const { ticketId, ticketOwner, ticketDate } = location.state;
+  const navigate = useNavigate();
+  const { ticketId, ticketOwner, ticketDate, ticketFrom, ticketTo, ticketTime } = location.state;
+
+  const handleCancel = () => {
+    alert('Ticket has been cancelled.');
+    navigate('/');
+  };
+
 
   return (
     <div className="ticket-container">
@@ -14,9 +21,35 @@ function TicketResultPage() {
           <img src={ticketImage} alt="Ticket" />
         </div>
         <div className="ticket-info">
-          <p>Ticket ID: {ticketId}</p>
-          <p>Ticket Owner: {ticketOwner}</p>
-          <p>Ticket Date: {ticketDate}</p>
+          <table>
+            <tbody>
+              <tr>
+                <td><strong>Ticket ID:</strong></td>
+                <td>{ticketId}</td>
+              </tr>
+              <tr>
+                <td><strong>Ticket Owner:</strong></td>
+                <td>{ticketOwner}</td>
+              </tr>
+              <tr>
+                <td><strong>Ticket Date:</strong></td>
+                <td>{ticketDate}</td>
+              </tr>
+              <tr>
+                <td><strong>From:</strong></td>
+                <td>{ticketFrom}</td>
+              </tr>
+              <tr>
+                <td><strong>To:</strong></td>
+                <td>{ticketTo}</td>
+              </tr>
+              <tr>
+                <td><strong>Departure Time:</strong></td>
+                <td>{ticketTime} AM</td>
+              </tr>
+            </tbody>
+          </table>
+          <button className="cancel-button" onClick={handleCancel}>Cancel Ticket</button>
         </div>
       </div>
     </div>
