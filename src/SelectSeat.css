@@ -1,0 +1,52 @@
+.bt-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  border: 3px solid #333;
+  border-radius: 15px;
+  background-color: #f1f1f1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-top: 20px;
+  margin: 100px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.grid-button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: 1px solid #000;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+
+.seat {
+  width: 50px;
+  height: 50px;
+  background-color: #f9f9f9;
+  color: #000;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.seat:hover {
+  background-color: #e2e2e2;
+}
+
+.seat.occupied {
+  background-color: #ff6347;
+  cursor: not-allowed;
+}

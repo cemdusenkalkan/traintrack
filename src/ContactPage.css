@@ -1,0 +1,75 @@
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  margin-top: 50px;
+}
+
+.contact-info, .contact-form {
+  padding: 20px;
+  width: 48%;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* İçeriği yatay olarak ortalar */
+  justify-content: center; /* İçeriği dikey olarak ortalar */
+  margin-right: 4%;  
+  padding: 20px;
+  width: 48%;
+}
+
+.contact-info > h2, .contact-form > h2 {
+  margin-bottom: 40px; 
+}
+
+
+
+.contact-info {
+  margin-right: 4%;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.info-item img {
+  margin-right: 10px; /* adjust spacing between icon and text */
+  width: 30px; /* adjust icon size */
+  height: 30px; /* adjust icon size */
+}
+
+.contact-form input, .contact-form textarea, .contact-form button {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: none;
+  box-shadow: 0px 0px 8px rgba(46, 134, 222, 0.5);
+}
+
+.contact-form button {
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

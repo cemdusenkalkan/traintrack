@@ -1,0 +1,33 @@
+<h1> Tamamlanmış Kısımlar <h1>
+    -> To ve From arasında değiştirmek
+    -> To'da seçilenin From'da gözükmemesi
+    -> Seçimlere göre arama sonucu göstermek
+    -> Eski tarih girilebilmesini engellemek
+    -> Logo'ya tıklandığında home sayfasına aktar
+    -> One way butonunu düzenle
+    -> ticketların listelendiği sayfada önceki / sonraki güne geçiş
+    -> mainpage de arama yaparken kişi sayısı 
+
+
+<h1> Yapılacaklar <h1>
+    -> arama yaparken tarih/ from / to girilmediğinde uyarı çıkacak, şuanda kod hata veriyor.
+    -> Biri eşşek gibi yorumları silecek
+    -> Arkaplan görselini ayarla (krıp/ değiş/ bişiler yap işte)
+    -> Ticket Inquey düzenlenecek
+        * nereden nereye / saati / iptal etme butonu / sayfayı büyüt yani güzelleştir
+    -> Admindshboard'u düzenle
+    -> Droupdown'u düzenle
+    -> About TrainTrack ksımına etkileyici süper yazılar yazmak 
+    -> linkedin hesaplarımızı eklemek
+    -> iğrenç bi footer ekledim o düzenlenecek
+    -> admin bir şey silerken onay pop-up'ı
+    -> admin admin ekleyebilsin
+    -> takvimdeki butonları değiştirmek
+    -> bilet adımları eklenecek - koltuk seçme falan.
+    -> footer'a menünün aynısını taşı.
+    
+    
+    -> kullanıcıya özel sayfalar:
+        * profil düzenleme
+        * biletlerimi görüntüleme (geçmiş / aktif - > iptal talebi)
+
