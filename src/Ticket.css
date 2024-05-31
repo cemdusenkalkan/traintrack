@@ -1,27 +1,65 @@
 .ticket-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+.ticket {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.ticket-logo img {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+.ticket-info p {
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.cancel-button {
+  padding: 1rem 2rem;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.cancel-button:hover {
+  background-color: #cc0000;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+@media (max-width: 600px) {
   .ticket {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
   }
-  
-  
-  .ticket-logo img {
-    width: 100px;
-    height: 100px;
+
+  .cancel-button {
+    padding: 0.75rem 1.5rem;
   }
-  
-  
-  .ticket-info {
-    color: #4a4a4a;
-  }
-  
+}

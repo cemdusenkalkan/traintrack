@@ -1,5 +1,5 @@
 import React from 'react';
-import '../AboutPage.css';
+import '../css/AboutPage.css';
 import founder1 from '../img/founder1.jpeg';
 import founder2 from '../img/founder2.jpg';
 import founder3 from '../img/founder3.jpeg';

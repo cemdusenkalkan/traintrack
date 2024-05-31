@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import { IoPersonSharp } from "react-icons/io5";
 
-
 const HomePage = () => {
   const [fromStation, setFromStation] = useState('');
   const [toStation, setToStation] = useState('');
@@ -18,6 +17,8 @@ const HomePage = () => {
   const [selectedOption, setSelectedOption] = useState('one-way');
   const [showFromSuggestions, setShowFromSuggestions] = useState(false);
   const [showToSuggestions, setShowToSuggestions] = useState(false);
+  const [passengerCount, setPassengerCount] = useState(1);
+  const [error, setError] = useState('');
 
   const navigate = useNavigate();
 
@@ -28,10 +29,13 @@ const HomePage = () => {
     { id: 4, name: 'Antalya' }
   ];
 
-  const [passengerCount, setPassengerCount] = useState(1);
-
-
   const handleSearchTickets = () => {
+    if (!fromStation || !toStation || !departureDate) {
+      setError('Please fill in all fields.');
+      return;
+    }
+    setError('');
+
     const params = new URLSearchParams({
       from: fromStation,
       to: toStation,
@@ -86,6 +90,7 @@ const HomePage = () => {
         </div>
 
         <div className="search-fields">
+          {error && <div className="error-message">{error}</div>}
           <div className="input-wrapper">
             <input
               type="text"

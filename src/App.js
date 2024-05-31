@@ -14,10 +14,10 @@ import TicketsList from './pages/TicketsList';
 import PaymentPage from './pages/PaymentPage';
 import SelectSeatPage from './pages/SelectSeatPage';
 import AdminPanelPage from './pages/AdminPanelPage';
+import TicketPurchase from './pages/TicketPurchase';
+import AboutPage from './pages/AboutPage'; // AboutPage bileşenini içe aktarın
 import ChatSupport from './components/ChatSupport';
 import Footer from './components/Footer';
-
-
 
 import logoImage from './img/logo.png';
 
@@ -25,7 +25,6 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
 
- 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
@@ -52,7 +51,7 @@ const App = () => {
     <Router>
       <div className="App">
         <header>
-          <Navbar expand="lg" className="navbar-links">
+          <Navbar bg="light" expand="lg" className="navbar-links">
             <Container>
               <Navbar.Brand href="/">
                 <img src={logoImage} className="logo" alt="logo" />
@@ -60,21 +59,21 @@ const App = () => {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
-                  <Nav.Link as={NavLink} to="/" className="navbar-link" activeClassName="active">Home</Nav.Link>
-                  <Nav.Link as={NavLink} to="/contact" className="navbar-link" activeClassName="active">Contact</Nav.Link>
-                  <Nav.Link as={NavLink} to="/ticket-inquiry" className="navbar-link" activeClassName="active">Ticket Inquiry</Nav.Link>
+                  <Nav.Link as={NavLink} to="/" className="navbar-link">Home</Nav.Link>
+                  <Nav.Link as={NavLink} to="/contact" className="navbar-link">Contact</Nav.Link>
+                  <Nav.Link as={NavLink} to="/ticket-inquiry" className="navbar-link">Ticket Inquiry</Nav.Link>
+                  <Nav.Link as={NavLink} to="/about" className="navbar-link">About</Nav.Link> {/* About linki */}
                   {isLoggedIn ? (
                     <Dropdown align="end">
                       <Dropdown.Toggle variant="light" id="dropdown-basic" className="navbar-link">
                         {user?.name}
                       </Dropdown.Toggle>
-
                       <Dropdown.Menu>
                         <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   ) : (
-                    <Nav.Link as={NavLink} to="/login" className="navbar-link login-button" activeClassName="active">Login</Nav.Link>
+                    <Nav.Link as={NavLink} to="/login" className="navbar-link login-button">Login</Nav.Link>
                   )}
                 </Nav>
               </Navbar.Collapse>
@@ -89,17 +88,18 @@ const App = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/ticket-inquiry" element={<TrainSearchPage />} />
             <Route path="/ticket-result" element={<TicketResultPage />} />
-            <Route path="*" element={<NotFoundPage />} />
             <Route path="/ticket" element={<TicketsList />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/admin-dashboard" element={<AdminPanelPage />} />
-            <Route path="/SelectSeatPage" element={<SelectSeatPage />} />
+            <Route path="/select-seat" element={<SelectSeatPage />} />
+            <Route path="/ticket-purchase" element={<TicketPurchase />} />
+            <Route path="/about" element={<AboutPage />} /> {/* AboutPage rotası */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <ChatSupport />
         </main>
+        <Footer />
       </div>
-
-      <Footer />
     </Router>
   );
 };

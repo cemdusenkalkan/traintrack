@@ -1,99 +1,95 @@
-/* General styling for the search page */
 .search-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+.search-container h2 {
+  color: #333;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  animation: fadeInDown 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.search-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.search-form label {
+  display: block;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.search-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.search-form input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.search-button {
+  padding: 1rem 2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Style for the title */
-  .search-container h2 {
-    color: #333;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    animation: fadeInDown 0.5s ease-out forwards;
-    opacity: 0;
-    transform: translateY(-20px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Style for form */
+}
+
+@media (max-width: 600px) {
   .search-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-    animation: fadeInUp 0.5s ease-out forwards;
-    opacity: 0;
-    transform: translateY(20px);
+    padding: 1rem;
   }
-  
-  /* Label styling */
-  .search-form label {
-    display: block;
-    color: #666;
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Input field styling */
-  .search-form input {
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    margin-bottom: 1rem;
-  }
-  
-  /* Input field focus effect */
-  .search-form input:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-  }
-  
-  /* Button styling */
+
   .search-button {
-    padding: 1rem 2rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+    padding: 0.75rem 1.5rem;
   }
-  
-  /* Button hover effect */
-  .search-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Animations */
-  @keyframes fadeInDown {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Responsive design */
-  @media (max-width: 600px) {
-    .search-form {
-      padding: 1rem;
-    }
-  
-    .search-button {
-      padding: 0.75rem 1.5rem;
-    }
-  }
-  
+}
