@@ -50,3 +50,8 @@
   background-color: #ff6347;
   cursor: not-allowed;
 }
+
+.selected {
+  background-color: #6cb2eb !important;
+  color: #fff !important;
+}

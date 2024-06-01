@@ -91,9 +91,9 @@ const App = () => {
             <Route path="/ticket" element={<TicketsList />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/admin-dashboard" element={<AdminPanelPage />} />
-            <Route path="/select-seat" element={<SelectSeatPage />} />
+            <Route path="/SelectSeatPage" element={<SelectSeatPage />} />
             <Route path="/ticket-purchase" element={<TicketPurchase />} />
-            <Route path="/about" element={<AboutPage />} /> {/* AboutPage rotası */}
+            <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <ChatSupport />
