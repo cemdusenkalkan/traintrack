@@ -24,39 +24,57 @@ const PaymentPage = () => {
   };
 
   return (
-    <div className="payment-container">
-      <h1>Payment</h1>      
-      <form onSubmit={handleSubmit} className="payment-form">
-        <input
-          name="cardNumber"
-          value={cardInfo.cardNumber}
-          onChange={handleInputChange}
-          placeholder="Card Number"
-          required
-        />
-        <input
-          name="name"
-          value={cardInfo.name}
-          onChange={handleInputChange}
-          placeholder="Name on Card"
-          required
-        />
-        <input
-          name="expiryDate"
-          value={cardInfo.expiryDate}
-          onChange={handleInputChange}
-          placeholder="Expiry Date"
-          required
-        />
-        <input
-          name="cvv"
-          value={cardInfo.cvv}
-          onChange={handleInputChange}
-          placeholder="CVV"
-          required
-        />
-        <button type="submit">Buy</button>
-      </form>
+    <div>
+      <div className="row">
+        <div className="col-12 mb-4">
+          <div className="progress-steps">
+            <span className=" ">1. Select Route</span>
+            <span className="arrow">→</span>
+            <span className="">2. Select Train</span>
+            <span className="arrow">→</span>
+            <span className="">3. Select Seats</span>
+            <span className="arrow">→</span>
+            <span className="">4. Passenger Information</span>
+            <span className="arrow">→</span>
+            <span className="active-step">5. Payment</span>
+          </div>
+        </div>
+      </div>
+      <div className="payment-container">
+
+        <h1>Payment</h1>
+        <form onSubmit={handleSubmit} className="payment-form">
+          <input
+            name="cardNumber"
+            value={cardInfo.cardNumber}
+            onChange={handleInputChange}
+            placeholder="Card Number"
+            required
+          />
+          <input
+            name="name"
+            value={cardInfo.name}
+            onChange={handleInputChange}
+            placeholder="Name on Card"
+            required
+          />
+          <input
+            name="expiryDate"
+            value={cardInfo.expiryDate}
+            onChange={handleInputChange}
+            placeholder="Expiry Date"
+            required
+          />
+          <input
+            name="cvv"
+            value={cardInfo.cvv}
+            onChange={handleInputChange}
+            placeholder="CVV"
+            required
+          />
+          <button type="submit">Buy</button>
+        </form>
+      </div>
     </div>
   );
 };

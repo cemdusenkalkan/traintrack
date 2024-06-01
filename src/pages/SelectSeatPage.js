@@ -36,7 +36,7 @@ const SelectedSeatPage = () => {
             key={seatId}
             className={`m-2 seat ${selectedSeats.includes(seatId) ? 'selected' : ''} ${!seat.available ? 'occupied' : ''}`}
             onClick={() => handleSeatClick(seatId)}
-            disabled={!seat.available || (selectedSeats.length >= passengers)}
+            disabled={!seat.available}
           >
             {seatId}
           </button>
@@ -48,37 +48,54 @@ const SelectedSeatPage = () => {
 
   const handleSeatClick = (seatId) => {
     if (selectedSeats.includes(seatId)) {
+      // Koltuğu kaldır
       setSelectedSeats(selectedSeats.filter(seat => seat !== seatId));
     } else if (selectedSeats.length < passengers) {
+      // Koltuğu seç
       setSelectedSeats([...selectedSeats, seatId]);
+    } else {
+      // Kullanıcıya bir uyarı mesajı göster
+      alert("You can only select up to " + passengers + " seats.");
     }
   };
 
   const handleNextClick = () => {
-    // Ödeme sayfasına seçilen koltuk bilgilerini ve diğer bilgileri aktar
-    navigate(`/passenger-info?selectedSeats=${selectedSeats.join(',')}`);
+    if (selectedSeats.length !== parseInt(passengers)) {
+      alert("Please select " + passengers + " seats.");
+      return;
+    }
+
+    navigate('/passenger-information', {
+      state: { selectedSeats, passengers: parseInt(passengers) }
+    });
   };
 
   return (
     <div>
-      <div>
-        <div className="row">
-          <div className="col-12 mb-4">
-            <div className="progress-steps">
-              <span className="active-step">1. Select Train</span>
-              <span className="arrow">→</span>
-              <span className="active-step">2. Select Seats</span>
-              <span className="arrow">→</span>
-              <span className="disabled-step">3. Passengers</span>
-              <span className="arrow">→</span>
-              <span className="disabled-step">4. Reservation</span>
-            </div>
+      <div className="row">
+        <div className="col-12 mb-4">
+          <div className="progress-steps">
+            <span className=" ">1. Select Route</span>
+            <span className="arrow">→</span>
+            <span className=" ">2. Select Train</span>
+            <span className="arrow">→</span>
+            <span className="active-step">3. Select Seats</span>
+            <span className="arrow">→</span>
+            <span className="disabled-step">4. Passenger Information</span>
+            <span className="arrow">→</span>
+            <span className="disabled-step">5. Payment</span>
           </div>
         </div>
       </div>
 
-      <div className="bt-container mt-5">
-        <div className="row justify-content-center">
+      <div className="row justify-content-center mt-2 mb-2">
+        <div className="col-auto">
+          <button onClick={handleNextClick} className="btn btn-primary">Select</button>
+        </div>
+      </div>
+
+      <div className="bt-container mt-4 mb-4">
+        <div className="row justify-content-center ">
           <div className="col-auto">
             {renderButtons(0, 6, 'A')}
           </div>
@@ -109,12 +126,6 @@ const SelectedSeatPage = () => {
           <div className="col-auto">
             {renderButtons(6, 12, 'D')}
           </div>
-        </div>
-      </div>
-
-      <div className="row justify-content-center mt-5">
-        <div className="col-auto">
-          <button onClick={handleNextClick} className="btn btn-primary">Proceed to Payment</button>
         </div>
       </div>
     </div>

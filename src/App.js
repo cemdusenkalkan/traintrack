@@ -16,6 +16,7 @@ import SelectSeatPage from './pages/SelectSeatPage';
 import AdminPanelPage from './pages/AdminPanelPage';
 import TicketPurchase from './pages/TicketPurchase';
 import AboutPage from './pages/AboutPage';
+import PassengerInformationPage from './pages/PassengerInformationPage';
 import ChatSupport from './components/ChatSupport';
 import Footer from './components/Footer';
 
@@ -62,7 +63,7 @@ const App = () => {
                   <Nav.Link as={NavLink} to="/" className="navbar-link">Home</Nav.Link>
                   <Nav.Link as={NavLink} to="/contact" className="navbar-link">Contact</Nav.Link>
                   <Nav.Link as={NavLink} to="/ticket-inquiry" className="navbar-link">Ticket Inquiry</Nav.Link>
-                  <Nav.Link as={NavLink} to="/about" className="navbar-link">About</Nav.Link>
+                  <Nav.Link as={NavLink} to="/about" className="navbar-link">About Us</Nav.Link>
                   {isLoggedIn ? (
                     <Dropdown align="end">
                       <Dropdown.Toggle variant="light" id="dropdown-basic" className="navbar-link">
@@ -94,6 +95,7 @@ const App = () => {
             <Route path="/SelectSeatPage" element={<SelectSeatPage />} />
             <Route path="/ticket-purchase" element={<TicketPurchase />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/passenger-information" element={<PassengerInformationPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <ChatSupport />

@@ -1,12 +1,20 @@
 
+    ???? admin.css TicketResultPage içerisindeki tabloyu etkiliyor neden anlamadım!!
+
+
 <h1> Yapılacaklar <h1>
     -> Biri eşşek gibi yorumları silecek
+
     -> Arkaplan görselini ayarla (krıp/ değiş/ bişiler yap işte)
+
     -> Admindshboard'u düzenle
         -> admin bir şey silerken onay pop-up'ı
+
     -> linkedin hesaplarımızı eklemek
+
     -> takvimdeki butonları değiştirmek
-    -> bilet adımları eklenecek - koltuk seçme falan.
+
+
     -> kullanıcıya özel sayfalar:
         * profil düzenleme
         * biletlerimi görüntüleme (geçmiş / aktif - > iptal talebi)
@@ -28,9 +36,8 @@
     -> iğrenç bi footer ekledim o düzenlenecek
     -> Ticket Inquey düzenlenecek
         * nereden nereye / saati / iptal etme butonu / sayfayı büyüt yani güzelleştir
+    -> bilet adımları eklenecek - koltuk seçme falan.
 
 
-
-    ???? admin.css TicketResultPage içerisindeki tabloyu etkiliyor neden anlamadım!!
 
 

@@ -190,13 +190,15 @@ const TicketsList = () => {
       <div className="row">
         <div className="col-12 mb-4">
           <div className="progress-steps">
-            <span onClick={() => handleStepClick(1)} className="active-step">1. Select Train</span>
+            <span className=" ">1. Select Route</span>
             <span className="arrow">→</span>
-            <span className="disabled-step">2. Select Seats</span>
+            <span className="active-step">2. Select Train</span>
             <span className="arrow">→</span>
-            <span className="disabled-step">3. Passengers</span>
+            <span className="disabled-step">3. Select Seats</span>
             <span className="arrow">→</span>
-            <span className="disabled-step">4. Reservation</span>
+            <span className="disabled-step">4. Passenger Information</span>
+            <span className="arrow">→</span>
+            <span className="disabled-step">5. Payment</span>
           </div>
         </div>
       </div>
@@ -285,7 +287,7 @@ const TicketsList = () => {
                   <div className="ticket-detail"><strong>Arrival Time:</strong> <span>{ticket.arrival}</span></div>
                   <div className="ticket-detail"><strong>Transfer:</strong> <span>{ticket.transfer ? 'Yes' : 'No'}</span></div>
                   <div className="ticket-detail"><strong>Price:</strong> <span>${ticket.price}</span></div>
-                  <button className="btn btn-primary mt-2" onClick={() => handleBuyClick(ticket.id)}>Buy</button>
+                  <button className="btn btn-primary mt-2" onClick={() => handleBuyClick(ticket.id)}>Select</button>
                 </div>
               ))
             ) : (
