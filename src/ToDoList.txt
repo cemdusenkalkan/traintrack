@@ -1,8 +1,6 @@
-
-    ???? admin.css TicketResultPage içerisindeki tabloyu etkiliyor neden anlamadım!!
-
-
 <h1> Yapılacaklar <h1>
+
+    -> öylesine profile ve mytickets sayfası rklendi DÜZENLENECEK!!! 
 
     !!! TicketInformation.js dinamik hale getirileck.
     
@@ -11,16 +9,13 @@
     -> Arkaplan görselini ayarla (krıp/ değiş/ bişiler yap işte)
 
     -> Admindshboard'u düzenle
-        -> admin bir şey silerken onay pop-up'ı
 
     -> linkedin hesaplarımızı eklemek
 
     -> takvimdeki butonları değiştirmek
 
+    ???? admin.css TicketResultPage içerisindeki tabloyu etkiliyor neden anlamadım!!
 
-    -> kullanıcıya özel sayfalar:
-        * profil düzenleme
-        * biletlerimi görüntüleme (geçmiş / aktif - > iptal talebi)
 
 
 <h1> Tamamlanmış Kısımlar <h1>
@@ -40,6 +35,7 @@
     -> Ticket Inquey düzenlenecek
         * nereden nereye / saati / iptal etme butonu / sayfayı büyüt yani güzelleştir
     -> bilet adımları eklenecek - koltuk seçme falan.
+    -> admin bir şey silerken onay pop-up'ı
 
 
 

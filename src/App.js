@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
 import './App.css';
@@ -17,6 +17,8 @@ import AdminPanelPage from './pages/AdminPanelPage';
 import TicketPurchase from './pages/TicketPurchase';
 import AboutPage from './pages/AboutPage';
 import PassengerInformationPage from './pages/PassengerInformationPage';
+import MyTicketsPage from './pages/MyTicketsPage';
+import ProfilePage from './pages/ProfilePage';
 import ChatSupport from './components/ChatSupport';
 import Footer from './components/Footer';
 
@@ -70,6 +72,8 @@ const App = () => {
                         {user?.name}
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
+                        <Dropdown.Item as={Link} to="/profile">Profile</Dropdown.Item>
+                        <Dropdown.Item as={Link} to="/my-tickets">My Tickets</Dropdown.Item>
                         <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
@@ -95,6 +99,8 @@ const App = () => {
             <Route path="/SelectSeatPage" element={<SelectSeatPage />} />
             <Route path="/ticket-purchase" element={<TicketPurchase />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/my-tickets" element={<MyTicketsPage />} />
+            <Route path="/profile" element={<ProfilePage user={user} />} />
             <Route path="/passenger-information" element={<PassengerInformationPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
