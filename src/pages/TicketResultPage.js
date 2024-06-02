@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import '../Ticket.css';
 import ticketImage from '../img/ticket.png';
 import backgroundImage from '../img/BackgroundTicketInquiry.jpg';
+import TicketInformation from '../components/TicketInformation';
 
 function TicketResultPage() {
   const location = useLocation();
@@ -56,6 +57,9 @@ function TicketResultPage() {
             </tbody>
           </table>
           <button className="cancel-button" onClick={handleCancel}>Cancel Ticket</button>
+        </div>
+        <div style={{ marginTop: '10px' }}>
+          <TicketInformation />
         </div>
 
       </div>

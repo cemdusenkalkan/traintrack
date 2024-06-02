@@ -3,6 +3,9 @@
 
 
 <h1> Yapılacaklar <h1>
+
+    !!! TicketInformation.js dinamik hale getirileck.
+    
     -> Biri eşşek gibi yorumları silecek
 
     -> Arkaplan görselini ayarla (krıp/ değiş/ bişiler yap işte)
