@@ -10,8 +10,10 @@ import { useNavigate } from 'react-router-dom';
 import { IoPersonSharp } from "react-icons/io5";
 
 const HomePage = () => {
-  const [fromStation, setFromStation] = useState('');
-  const [toStation, setToStation] = useState('');
+  const [fromStationName, setFromStationName] = useState('');
+  const [fromStationId, setFromStationId] = useState(null);
+  const [toStationName, setToStationName] = useState('');
+  const [toStationId, setToStationId] = useState(null);
   const [departureDate, setDepartureDate] = useState(null);
   const [returnDate, setReturnDate] = useState(null);
   const [selectedOption, setSelectedOption] = useState('one-way');
@@ -30,37 +32,42 @@ const HomePage = () => {
   ];
 
   const handleSearchTickets = () => {
-    if (!fromStation || !toStation || !departureDate) {
-      setError('Please fill in all fields.');
-      return;
+    if (!fromStationId || !toStationId || !departureDate) {
+      alert("Please fill in all fields.");
+    } else if (selectedOption === 'roundtrip' && !returnDate) {
+      alert("Please fill in all fields.");
+    } else {
+      const params = new URLSearchParams({
+        from: fromStationId,
+        to: toStationId,
+        departure: departureDate ? departureDate.toISOString() : '',
+        return: selectedOption === 'roundtrip' && returnDate ? returnDate.toISOString() : '',
+        oneWay: selectedOption === 'one-way',
+        passengers: passengerCount
+      });
+      navigate(`/ticket?${params.toString()}`);
     }
-    setError('');
-
-    const params = new URLSearchParams({
-      from: fromStation,
-      to: toStation,
-      departure: departureDate ? departureDate.toISOString() : '',
-      return: selectedOption === 'roundtrip' && returnDate ? returnDate.toISOString() : '',
-      oneWay: selectedOption === 'one-way',
-      passengers: passengerCount
-    });
-    navigate(`/ticket?${params.toString()}`);
   };
 
-  const handleCitySelect = (city, setStation, setShowSuggestions) => {
-    setStation(city.id); // Store the city id instead of name
+
+  const handleCitySelect = (city, setStationName, setStationId, setShowSuggestions) => {
+    setStationName(city.name); // Store the city name
+    setStationId(city.id); // Store the city id
     setShowSuggestions(false); // Hide suggestions after selection
   };
 
   const handleSwapStations = () => {
-    const temp = fromStation;
-    setFromStation(toStation);
-    setToStation(temp);
+    const tempName = fromStationName;
+    const tempId = fromStationId;
+    setFromStationName(toStationName);
+    setFromStationId(toStationId);
+    setToStationName(tempName);
+    setToStationId(tempId);
   };
 
-  const filteredCities = (input, exclude) => {
+  const filteredCities = (input, excludeId) => {
     if (!input) return [];
-    return cities.filter(city => city.name.toLowerCase().includes(input.toLowerCase()) && city.id !== exclude);
+    return cities.filter(city => city.name.toLowerCase().includes(input.toLowerCase()) && city.id !== excludeId);
   };
 
   return (
@@ -89,15 +96,16 @@ const HomePage = () => {
           </label>
         </div>
 
+
         <div className="search-fields">
-          {error && <div className="error-message">{error}</div>}
+
           <div className="input-wrapper">
             <input
               type="text"
               placeholder="From"
-              value={fromStation ? cities.find(city => city.id === fromStation)?.name : ''}
+              value={fromStationName}
               onChange={(e) => {
-                setFromStation(e.target.value);
+                setFromStationName(e.target.value);
                 setShowFromSuggestions(true);
               }}
               onFocus={() => setShowFromSuggestions(true)}
@@ -106,8 +114,8 @@ const HomePage = () => {
             />
             {showFromSuggestions && (
               <div className="suggestions-list">
-                {filteredCities(fromStation, toStation).map(city => (
-                  <div key={city.id} onClick={() => handleCitySelect(city, setFromStation, setShowFromSuggestions)} className="suggestion-item">
+                {filteredCities(fromStationName, toStationId).map(city => (
+                  <div key={city.id} onClick={() => handleCitySelect(city, setFromStationName, setFromStationId, setShowFromSuggestions)} className="suggestion-item">
                     {city.name}
                   </div>
                 ))}
@@ -121,9 +129,9 @@ const HomePage = () => {
             <input
               type="text"
               placeholder="To"
-              value={toStation ? cities.find(city => city.id === toStation)?.name : ''}
+              value={toStationName}
               onChange={(e) => {
-                setToStation(e.target.value);
+                setToStationName(e.target.value);
                 setShowToSuggestions(true);
               }}
               onFocus={() => setShowToSuggestions(true)}
@@ -132,8 +140,8 @@ const HomePage = () => {
             />
             {showToSuggestions && (
               <div className="suggestions-list">
-                {filteredCities(toStation, fromStation).map(city => (
-                  <div key={city.id} onClick={() => handleCitySelect(city, setToStation, setShowToSuggestions)} className="suggestion-item">
+                {filteredCities(toStationName, fromStationId).map(city => (
+                  <div key={city.id} onClick={() => handleCitySelect(city, setToStationName, setToStationId, setShowToSuggestions)} className="suggestion-item">
                     {city.name}
                   </div>
                 ))}
