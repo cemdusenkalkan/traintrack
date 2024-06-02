@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
 import '../RegisterPage.css';
-import { useNavigate } from 'react-router-dom'; 
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -8,15 +9,24 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [recaptchaValue, setRecaptchaValue] = useState(null);
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
+    if (!recaptchaValue) {
+      alert('Please complete the reCAPTCHA.');
+      return;
+    }
     console.log('Registering with', email, password);
     // Add your registration logic here
   };
 
   const handleLoginRedirect = () => {
     navigate('/login');
+  };
+
+  const handleRecaptchaChange = (value) => {
+    setRecaptchaValue(value);
   };
 
   return (
@@ -52,6 +62,12 @@ const RegisterPage = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
+            />
+          </div>
+          <div className="recaptcha-container">
+            <ReCAPTCHA
+              sitekey="6Lediu4pAAAAACTcA9wptRER2xZR6KS0FHffZVR-"
+              onChange={handleRecaptchaChange}
             />
           </div>
           <button type="submit">Register</button>
