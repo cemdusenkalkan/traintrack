@@ -45,13 +45,15 @@ const ContactPage = () => {
           <div className='col-md-6'>
             <div className="contact-info m-2">
               <h2>Contact us</h2>
-              <div className="info-item">
+
+              <div className='info-item' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <img src={phoneImage} alt="Phone" />
-                <p>+90 538 543 86 10</p>
+                <span>+90 538 543 86 10</span>
               </div>
-              <div className="info-item">
+
+              <div className='info-item' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <img src={mailImage} alt="Mail" />
-                <p>trainntrackk@gmail.com</p>
+                <span>trainntrackk@gmail.com</span>
               </div>
             </div>
           </div>

@@ -145,13 +145,20 @@ const TicketInformation = () => {
             <PDFDownloadLink document={<MyDocument {...ticketData} />} fileName="ticket.pdf">
                 {({ loading }) => (
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <FaRegFilePdf style={{ marginRight: '5px' }} />
-                        <span>Download PDF</span>
+                        {loading ? (
+                            <span>Please wait...</span>
+                        ) : (
+                            <>
+                                <FaRegFilePdf style={{ marginRight: '5px' }} />
+                                <span>Download PDF</span>
+                            </>
+                        )}
                     </div>
                 )}
             </PDFDownloadLink>
         </div>
     );
+
 };
 
 export default TicketInformation;
