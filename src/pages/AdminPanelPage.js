@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../admin.css';
+import '../css/AdminUserManagement.css';
 import AdminUserManagement from '../components/AdminUserManagement';
 // TicketManager ve TrainManager bileşenlerini içe aktar
 import TicketManager from '../components/TicketManager';

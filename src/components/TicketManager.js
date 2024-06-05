@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../admin.css';
+import '../css/AdminUserManagement.css';
 
 const initialTickets = [
   { id: 1, name: 'Miray Köksal', destination: 'İstanbul', status: 'Cancelled' },

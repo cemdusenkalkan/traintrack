@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../admin.css';
+import '../css/AdminUserManagement.css';
 
 const TrainManager = () => {
   const [trains, setTrains] = useState([

@@ -12,18 +12,26 @@ const SelectedSeatPage = () => {
 
   const { passengers } = queryString.parse(location.search);
 
+
+  // örnek veri, db'den alıcaz:
   useEffect(() => {
     // Koltuk veri setini oluştur
     const rows = ['A', 'B', 'C', 'D'];
     const seatsPerRow = 12;
     const newSeats = [];
+    const occupancyRate = 0.3; // %30 dolu koltuk oranı
+
     for (let row of rows) {
       for (let i = 1; i <= seatsPerRow; i++) {
-        newSeats.push({ id: `${i}${row}`, name: `${i}${row}`, available: true });
+        // Rastgele bir şekilde koltukların %30'unu dolu olarak ayarla
+        const isAvailable = Math.random() > occupancyRate;
+        newSeats.push({ id: `${i}${row}`, name: `${i}${row}`, available: isAvailable });
       }
     }
+
     setSeats(newSeats);
   }, []);
+
 
   const renderButtons = (start, count, char) => {
     let buttons = [];

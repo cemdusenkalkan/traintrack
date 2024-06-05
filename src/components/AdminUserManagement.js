@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../admin.css';
+import '../css/AdminUserManagement.css';
+;
 
 const initialUsers = [
   { id: 1, name: 'Admin', email: 'admin@gmail.com', role: 'admin' },
