@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../css/AdminUserManagement.css';
-;
 
 const initialUsers = [
   { id: 1, name: 'Admin', email: 'admin@gmail.com', role: 'admin' },
@@ -13,7 +12,7 @@ const AdminUserManagement = () => {
   const [users, setUsers] = useState(initialUsers);
   const [showModal, setShowModal] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
-  const [newAdmin, setNewAdmin] = useState({ name: '', email: '' });
+  const [newAdmin, setNewAdmin] = useState({ name: '', email: '', password: '' });
 
   const handleDeleteUser = () => {
     setUsers(users.filter(user => user.id !== userToDelete));
@@ -31,10 +30,11 @@ const AdminUserManagement = () => {
       id: users.length + 1,
       name: newAdmin.name,
       email: newAdmin.email,
+      password: newAdmin.password,
       role: 'admin'
     };
     setUsers([...users, newAdminUser]);
-    setNewAdmin({ name: '', email: '' });
+    setNewAdmin({ name: '', email: '', password: '' });
   };
 
   return (
@@ -97,6 +97,15 @@ const AdminUserManagement = () => {
             type="email"
             value={newAdmin.email}
             onChange={(e) => setNewAdmin({ ...newAdmin, email: e.target.value })}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            value={newAdmin.password}
+            onChange={(e) => setNewAdmin({ ...newAdmin, password: e.target.value })}
             required
           />
         </div>

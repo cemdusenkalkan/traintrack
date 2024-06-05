@@ -21,6 +21,7 @@ import MyTicketsPage from './pages/MyTicketsPage';
 import ProfilePage from './pages/ProfilePage';
 import ChatSupport from './components/ChatSupport';
 import Footer from './components/Footer';
+import ForgotPasswordPage from './pages/ForgotPasswordPage'; 
 
 import logoImage from './img/logo.png';
 
@@ -29,17 +30,15 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [userRole, setUserRole] = useState(null);
 
-
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       setUser(parsedUser);
       setIsLoggedIn(true);
-      setUserRole(parsedUser.role); // Assuming the role is stored in the 'role' property of the user object
+      setUserRole(parsedUser.role); 
     }
   }, []);
-
 
   const handleLogin = () => {
     const storedUser = localStorage.getItem('user');
@@ -101,15 +100,15 @@ const App = () => {
             <Route path="/ticket-result" element={<TicketResultPage />} />
             <Route path="/ticket" element={<TicketsList />} />
             <Route path="/payment" element={<PaymentPage />} />
+            <Route path="/SelectSeatPage" element={<SelectSeatPage />} />
+            <Route path="/ticket-purchase" element={<TicketPurchase />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} /> {/* Added Forgot Password route */}
             {isLoggedIn && userRole === 'admin' ? (
               <Route path="/admin-dashboard" element={<AdminPanelPage />} />
             ) : (
               <Route path="/admin-dashboard" element={<NotFoundPage />} />
             )}
-            <Route path="/SelectSeatPage" element={<SelectSeatPage />} />
-            <Route path="/ticket-purchase" element={<TicketPurchase />} />
-            <Route path="/about" element={<AboutPage />} />
-
             {isLoggedIn ? (
               <Route path="/my-tickets" element={<MyTicketsPage user={user} />} />
             ) : (

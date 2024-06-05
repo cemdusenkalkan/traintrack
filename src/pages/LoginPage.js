@@ -38,6 +38,11 @@ const LoginPage = ({ onLogin }) => {
     navigate('/register');
   };
 
+  const handleForgotPasswordRedirect = (e) => {
+    e.preventDefault();
+    navigate('/forgot-password');
+  };
+
   return (
     <div className="login-page">
       <div className="login-container">
@@ -68,6 +73,7 @@ const LoginPage = ({ onLogin }) => {
         </form>
         <div className="register-link-container">
           <a href="" onClick={handleRegisterRedirect} className="register-link">Don't have an account yet? Sign Up</a>
+          <a href="" onClick={handleForgotPasswordRedirect} className="forgot-password-link">Forgot Password?</a>
         </div>
       </div>
     </div>

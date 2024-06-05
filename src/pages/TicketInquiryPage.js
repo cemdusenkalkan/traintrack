@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../css/TicketInquiryPage.css';
 import '../css/form.css';
 import backgroundImage from '../img/BackgroundTicketInquiry.jpg';
@@ -18,7 +17,7 @@ function TicketInquiryPage() {
       ticketFrom: 'Antalya',
       ticketTo: 'Samsun',
       ticketTime: '16.00',
-
+      seat: '1A', // Added seat information
     },
     {
       ticketId: 20191701018,
@@ -27,6 +26,7 @@ function TicketInquiryPage() {
       ticketFrom: 'Antalya',
       ticketTo: 'İstanbul',
       ticketTime: '16.30',
+      seat: '2B', // Added seat information
     },
     {
       ticketId: 20191701019,
@@ -35,6 +35,7 @@ function TicketInquiryPage() {
       ticketFrom: 'İstanbul',
       ticketTo: 'Samsun',
       ticketTime: '14.00',
+      seat: '3C', // Added seat information
     }
   ];
 
@@ -90,7 +91,6 @@ function TicketInquiryPage() {
         </form>
       </div>
     </div>
-
   );
 }
 
