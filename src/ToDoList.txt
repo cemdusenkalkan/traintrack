@@ -1,5 +1,22 @@
 <h1> Yapılacaklar <h1>
 
+    -> recapchtaya bakılacak
+    -> şifremi unuttum sayfası eklenicek (login + prifle sayfasına)
+    -> sayfanın başlığı düzenkenecek react app yazısı ve logosu
+    -> ticket inquiry 'de koltuk numarası, isim ve soyisim, (koltuk seçimi görseli)
+    * ticket listelemede çubuklardan eski sayfalara dön ve bilgileri taşı
+    * price filtreleme
+    * my-ticketsta pdf açılmıyor, cancel çalışmıyor, inquiry'de getrililen tüm bilgiler gelicek
+    * Admindshboard'da ticket managerda sadece dest geliyor diğer bilgiler de..
+    * add new adminde şifre de belirlensin
+    * ADMININ NAVBARINI düzenlenecek
+    
+
+
+
+
+
+
     -> öylesine profile ve mytickets sayfası rklendi DÜZENLENECEK!!! 
 
     !!! TicketInformation.js dinamik hale getirileck.
