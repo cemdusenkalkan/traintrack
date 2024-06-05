@@ -23,7 +23,7 @@ const AboutPage = () => {
                     <img src={founder1} alt="Founder 1" className="founder-image" />
                     <p> Meryem Çanga </p>
                 </a>
-                <a className="founder" style={{ textDecoration: 'none' }} href="https://www.linkedin.com/in/meryemcanga/"
+                <a className="founder" style={{ textDecoration: 'none' }} href="https://www.linkedin.com/in/cemdusenkalkan/"
                     target="_blank" rel="noopener noreferrer">
                     <h2>Founder</h2>
                     <img src={founder2} alt="Founder 2" className="founder-image" />
