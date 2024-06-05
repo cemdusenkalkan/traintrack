@@ -83,6 +83,7 @@ const HomePage = () => {
         <h2>traintrack</h2>
         <h3 className="slogan">Ride the Rails to Adventure - Your Journey Begins Here!</h3>
 
+        {/* 
         <div className="toggle-switch">
           <input
             type="checkbox"
@@ -95,7 +96,7 @@ const HomePage = () => {
             <span className={`label ${selectedOption === 'roundtrip' ? 'label-right' : 'label-hidden'}`}>Roundtrip</span>
           </label>
         </div>
-
+        */}
 
         <div className="search-fields">
 
@@ -175,6 +176,7 @@ const HomePage = () => {
             minDate={new Date()}
           />
 
+          {/* 
           {selectedOption === 'roundtrip' && (
             <DatePicker
               selected={returnDate}
@@ -184,6 +186,7 @@ const HomePage = () => {
               minDate={departureDate || new Date()}
             />
           )}
+          */ }
 
           <button type="button" onClick={handleSearchTickets}>Search</button>
         </div>

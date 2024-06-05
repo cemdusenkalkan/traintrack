@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, NavLink, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink, Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
 import './App.css';
@@ -27,14 +27,19 @@ import logoImage from './img/logo.png';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [userRole, setUserRole] = useState(null);
+
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      const parsedUser = JSON.parse(storedUser);
+      setUser(parsedUser);
       setIsLoggedIn(true);
+      setUserRole(parsedUser.role); // Assuming the role is stored in the 'role' property of the user object
     }
   }, []);
+
 
   const handleLogin = () => {
     const storedUser = localStorage.getItem('user');
@@ -44,10 +49,11 @@ const App = () => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = (navigate) => {
     localStorage.removeItem('user');
     setUser(null);
     setIsLoggedIn(false);
+    navigate('/');
   };
 
   return (
@@ -69,12 +75,12 @@ const App = () => {
                   {isLoggedIn ? (
                     <Dropdown align="end">
                       <Dropdown.Toggle variant="light" id="dropdown-basic" className="navbar-link">
-                        {user?.name}
+                        {user?.firstName}
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown.Item as={Link} to="/profile">Profile</Dropdown.Item>
                         <Dropdown.Item as={Link} to="/my-tickets">My Tickets</Dropdown.Item>
-                        <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                        <LogoutButton handleLogout={handleLogout} />
                       </Dropdown.Menu>
                     </Dropdown>
                   ) : (
@@ -95,12 +101,25 @@ const App = () => {
             <Route path="/ticket-result" element={<TicketResultPage />} />
             <Route path="/ticket" element={<TicketsList />} />
             <Route path="/payment" element={<PaymentPage />} />
-            <Route path="/admin-dashboard" element={<AdminPanelPage />} />
+            {isLoggedIn && userRole === 'admin' ? (
+              <Route path="/admin-dashboard" element={<AdminPanelPage />} />
+            ) : (
+              <Route path="/admin-dashboard" element={<NotFoundPage />} />
+            )}
             <Route path="/SelectSeatPage" element={<SelectSeatPage />} />
             <Route path="/ticket-purchase" element={<TicketPurchase />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/my-tickets" element={<MyTicketsPage />} />
-            <Route path="/profile" element={<ProfilePage user={user} />} />
+
+            {isLoggedIn ? (
+              <Route path="/my-tickets" element={<MyTicketsPage user={user} />} />
+            ) : (
+              <Route path="/my-tickets" element={<NotFoundPage />} />
+            )}
+            {isLoggedIn ? (
+              <Route path="/profile" element={<ProfilePage user={user} />} />
+            ) : (
+              <Route path="/profile" element={<NotFoundPage />} />
+            )}
             <Route path="/passenger-information" element={<PassengerInformationPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
@@ -109,6 +128,18 @@ const App = () => {
         <Footer />
       </div>
     </Router>
+  );
+};
+
+const LogoutButton = ({ handleLogout }) => {
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    handleLogout(navigate);
+  };
+
+  return (
+    <Dropdown.Item onClick={onLogout}>Logout</Dropdown.Item>
   );
 };
 

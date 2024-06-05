@@ -9,10 +9,10 @@ const LoginPage = ({ onLogin }) => {
   const [error, setError] = useState('');
 
   const validUsers = [
-    { id: 1, name: 'Admin', email: 'admin@gmail.com', password: 'password', role: 'admin' },
-    { id: 2, name: 'Miray Köksal', email: 'miray@gmail.com', password: 'password', role: 'user' },
-    { id: 3, name: 'Cem Kalkandüşen', email: 'cem@gmail.com', password: 'password', role: 'user' },
-    { id: 4, name: 'Meryem Çanga', email: 'meryem@gmail.com', password: 'password', role: 'user' }
+    { id: 1, firstName: 'Admin', lastName: 'Admin', email: 'admin@gmail.com', password: 'password', role: 'admin' },
+    { id: 2, firstName: 'Miray', lastName: 'Köksal', email: 'miray@gmail.com', password: 'password', role: 'user' },
+    { id: 3, firstName: 'Cem', lastName: 'Kalkandüşen', email: 'cem@gmail.com', password: 'password', role: 'user' },
+    { id: 4, firstName: 'Meryem', lastName: 'Çanga', email: 'meryem@gmail.com', password: 'password', role: 'user' }
   ];
 
   const handleLoginSubmit = (e) => {
