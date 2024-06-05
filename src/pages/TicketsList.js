@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { MdOutlineDateRange } from 'react-icons/md';
 import { IoPersonSharp } from "react-icons/io5";
+import queryString from 'query-string';
 import '../TicketsList.css';
 
 const getTimeRange = (time) => {
@@ -14,13 +15,12 @@ const getTimeRange = (time) => {
   if (hour >= 12 && hour < 17) return 'afternoon';
   return 'evening';
 };
-import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import '../TicketsList.css';
-import queryString from 'query-string';
 
 const TicketsList = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { from, to } = queryString.parse(location.search);
+
   const [tickets, setTickets] = useState([
     // Your tickets data...
     { id: 1, from: 'Izmir', fromId: 2, to: 'Istanbul', toId: 1, departure: '08:00', arrival: '10:00', transfer: false, price: 100 },
@@ -34,9 +34,7 @@ const TicketsList = () => {
     transfer: { withTransfer: true, withoutTransfer: true },
     arrivalTimes: ['night', 'morning', 'afternoon', 'evening'],
     departureTimes: ['night', 'morning', 'afternoon', 'evening'],
-    priceRange: [0, 200], // Added price range filter
-    departureTimes: ['night', 'morning', 'afternoon', 'evening'],
-    priceRange: [0, 200]
+    priceRange: [0, 200],
   });
 
   const handleFilterChange = (filterName, value) => {
@@ -49,12 +47,6 @@ const TicketsList = () => {
     }));
   };
 
-  const handlePriceRangeChange = (e) => {
-    const value = e.target.value.split('-').map(Number);
-    setFilters(prevFilters => ({
-      ...prevFilters,
-      priceRange: value,
-    }));
   const handleSelectBoxChange = (filterName, value) => {
     setFilters(prevFilters => {
       const updatedArray = prevFilters[filterName].includes(value)
@@ -81,12 +73,9 @@ const TicketsList = () => {
       const departureMatch = departureTimes.length > 0 && departureTimes.includes(getTimeRange(ticket.departure));
       const priceMatch = ticket.price >= priceRange[0] && ticket.price <= priceRange[1];
 
-      return transferMatch, arrivalMatch, departureMatch, priceMatch;
       return transferMatch && arrivalMatch && departureMatch && priceMatch;
     });
   };
-
-  const filteredTickets = filterTickets(tickets);
 
   const filteredTickets = filterTickets(tickets.filter(ticket => {
     return ticket.fromId === Number(from) && ticket.toId === Number(to);
@@ -94,32 +83,6 @@ const TicketsList = () => {
 
   return (
     <div className="container">
-      <div className="filters">
-        <div className="filter-section">
-          <label>
-            <input
-              type="checkbox"
-              onChange={(e) => handleFilterChange('withTransfer', e.target.checked)}
-              checked={filters.transfer.withTransfer}
-            /> With Transfer
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              onChange={(e) => handleFilterChange('withoutTransfer', e.target.checked)}
-              checked={filters.transfer.withoutTransfer}
-            /> Without Transfer
-          </label>
-        </div>
-        <div className="filter-section">
-          <h6>Price Range</h6>
-          <select onChange={handlePriceRangeChange}>
-            <option value="0-50">$0 - $50</option>
-            <option value="50-100">$50 - $100</option>
-            <option value="100-150">$100 - $150</option>
-            <option value="150-200">$150 - $200</option>
-          </select>
-    <div className="tickets-list">
       <div className="filters">
         <div className="filter-section">
           <label>

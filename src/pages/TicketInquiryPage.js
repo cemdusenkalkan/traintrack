@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigate hook'u içe aktarıldı
 import '../css/TicketInquiryPage.css';
 import '../css/form.css';
 import backgroundImage from '../img/BackgroundTicketInquiry.jpg';
@@ -47,7 +48,7 @@ function TicketInquiryPage() {
     }
     setError('');
 
-    const ticket = Tickets.find(t => t.ticketId === parseInt(ticketNumber, 10) && t.ticketOwner === lastName);
+    const ticket = Tickets.find(t => t.ticketId === parseInt(ticketNumber, 10) && t.ticketOwner.toLowerCase() === lastName.toLowerCase());
     if (!ticket) {
       setError('No ticket found with the provided details.');
       return;
